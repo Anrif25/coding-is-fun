@@ -1,5 +1,5 @@
 import random
-
+#basic search
 class search:
     def __init__(self):
         self.find = int(input("nhập vào số cần tìm: "))
