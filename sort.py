@@ -32,11 +32,35 @@ class sort:
                     self.list[j]= self.list[i]
                     self.list[i]= temp
         print(f"interchange sort: {self.list}")
-                    
+    
+    def _swap(self, i, j):
+        self.list[i], self.list[j] = self.list[j], self.list[i]
 
+    def selectionsort(self):
+        for i in range(self.leght):
+            min= self.list[i]
+            for j in range(i+1,self.leght):
+                if self.list[j]< min:
+                    min = self.list[j]
+                    self._swap(i,j)
+
+        print(f"selectionsort: {self.list}")
+    
+    def insertsort(self):
+        for i in range(1,self.leght):
+            key = self.list[i]
+            j=i-1
+            while(j>=0 and self.list[j]> key):
+                self.list[j+1] = self.list[j]
+                j -=1
+            self.list[j+1]= key
+        print(f"insertsort: {self.list}")
+                 
 if __name__== "__main__":
     s = sort()
     #s.bubblesort()
-    s.interchangesort()
+    #s.interchangesort()
+    #s.selectionsort()
+    s.insertsort()
         
         
