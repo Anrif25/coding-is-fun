@@ -55,12 +55,52 @@ class sort:
                 j -=1
             self.list[j+1]= key
         print(f"insertsort: {self.list}")
-                 
+    
+    #shellsort kinda "better insertsort"
+    def shellsort(self):
+        gap = int(self.leght/2)
+        while gap >0: 
+            for i in range(int(gap),self.leght):
+                key=self.list[i]
+                j=i
+                while (j >= gap and self.list[j-gap] > key):
+                    self.list[j] = self.list[j-gap]
+                    j -=gap
+                self.list[j]= key
+            gap =int(gap/2)
+            print(gap)
+        print(f"shellsort: {self.list}")        
+    
+    def quicksort(self):
+        def _partition(lo,hi):
+            pivot = self.list[hi]
+            i = lo-1
+            
+            for j in range(lo,hi):
+                if self.list[j] <= pivot:
+                    i+=1
+                    self._swap(i,j)
+                
+            self.list[i+1], self.list[hi] = self.list[hi], self.list[i+1]
+            return i+1
+        def _quick(lo,hi):
+            if lo<hi:
+                p = _partition(lo,hi)    
+
+                _quick(lo,p-1)
+                
+                _quick(p+1,hi)
+        _quick(0,self.leght-1)
+        
+        print(f"quicksort: {self.list}")
+                       
 if __name__== "__main__":
     s = sort()
     #s.bubblesort()
     #s.interchangesort()
     #s.selectionsort()
-    s.insertsort()
+    #s.insertsort()
+    #s.shellsort()
+    s.quicksort()
         
         
